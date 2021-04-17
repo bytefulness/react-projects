@@ -6,6 +6,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setText(data.slice(0, count));
   };
 
   return (
@@ -18,7 +19,7 @@ function App() {
           id="amount"
           name="amount"
           min="0"
-          max="8"
+          max="9"
           value={count}
           onChange={(e) => setCount(e.target.value)}
         />
@@ -26,6 +27,11 @@ function App() {
           Generate
         </button>
       </form>
+      <article>
+        {text.map((item, index) => {
+          return <p key={index}>{item}</p>;
+        })}
+      </article>
     </section>
   );
 }
