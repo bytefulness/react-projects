@@ -27,7 +27,7 @@ function App() {
       // Deal with edit
     } else {
       // Show alert
-
+      showAlert(true, "success", "Item added to the list");
       // Create item and push into state variable
       const newItem = { id: new Date().getTime().toString(), title: name };
       setList([...list, newItem]);
@@ -35,10 +35,21 @@ function App() {
     }
   };
 
+  const clearList = () => {
+    showAlert(true, "danger", "Deleted items");
+    setList([]);
+  };
+
+  const removeItem = (id) => {
+    showAlert(true, "danger", "Empty list");
+    const newList = list.filter((item) => id !== item.id);
+    setList(newList);
+  };
+
   return (
     <section className="section-center">
       <form className="grocery-form" onSubmit={handleSubmit}>
-        {alert.show && <Alert {...alert} removeAlert={showAlert} />}
+        {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
         <h3>What you are planning for today?</h3>
         <div className="form-control">
           <input
@@ -56,8 +67,10 @@ function App() {
 
       {list.length > 0 && (
         <div className="grocery-container">
-          <List items={list} />
-          <button className="clear-btn">Clear Items</button>
+          <List items={list} removeItem={removeItem} />
+          <button className="clear-btn" onClick={clearList}>
+            Clear Items
+          </button>
         </div>
       )}
     </section>
