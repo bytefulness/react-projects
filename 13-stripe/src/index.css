@@ -180,7 +180,7 @@ Stripe Styles
   content: "";
   position: absolute;
   width: 100%;
-  height: 65%;
+  height: 55%;
   top: 0;
   left: 0;
   background: url(./images/hero.svg);
@@ -195,25 +195,44 @@ Stripe Styles
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+  align-items: flex-start;
 }
 .hero-center {
   width: 90vw;
+  margin-top: 200px;
   max-width: var(--max-width);
   display: grid;
   align-items: center;
 }
 
 .hero-info h1 {
+  letter-spacing: -1px;
   text-transform: none;
   max-width: 500px;
   margin-bottom: 2rem;
 }
 .hero-info p {
+  font-size: 1.1rem;
   max-width: 35em;
   line-height: 1.8;
 }
 .hero-images {
   display: none;
+  animation: phone 3s ease-in-out infinite;
+}
+
+@keyframes phone {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(0, 20px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 /* nav media query */
@@ -265,7 +284,7 @@ Stripe Styles
   }
 
   .hero-info h1 {
-    font-size: 3rem;
+    font-size: 4rem;
   }
   .hero-info p {
     font-size: 1.25rem;
