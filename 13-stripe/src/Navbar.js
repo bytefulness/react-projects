@@ -14,11 +14,18 @@ const Navbar = () => {
     openSubmenu(page, { center, bottom });
   };
 
+  const handleSubmenu = (e) => {
+    const button = e.target.closest(".link-btn");
+    if (!button) {
+      closeSubmenu();
+    }
+  };
+
   return (
-    <nav className="nav">
+    <nav className="nav" onMouseOver={handleSubmenu}>
       <div className="nav-center">
         <div className="nav-header">
-          <img src={logo} alt="stirpe" />
+          <img src={logo} alt="stripe" />
           <button className="btn toggle-btn" onClick={openSidebar}>
             <FaBars />
           </button>
