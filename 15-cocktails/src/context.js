@@ -9,6 +9,51 @@ const AppProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("a");
   const [cocktails, setCocktails] = useState([]);
 
+  const fetchDrinks = async () => {
+    // We use the function multiple. So we must sure that loading is true
+    setLoading(true);
+    try {
+      const response = await fetch(`${url}${searchTerm}`);
+      if (!response.ok) {
+        throw new Error("Just happend an error about API");
+      }
+
+      const data = await response.json();
+      const { drinks } = data;
+      if (drinks) {
+        const newCocktails = drinks.map((cocktail) => {
+          const {
+            idDrink,
+            strDrink,
+            strDrinkThumb,
+            strAlcoholic,
+            strGlass,
+          } = cocktail;
+
+          return {
+            id: idDrink,
+            name: strDrink,
+            image: strDrinkThumb,
+            info: strAlcoholic,
+            glass: strGlass,
+          };
+        });
+
+        setCocktails(newCocktails);
+      } else {
+        setCocktails([]);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchDrinks();
+  }, [searchTerm]);
+
   return (
     <AppContext.Provider
       value={{
