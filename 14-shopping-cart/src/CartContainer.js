@@ -18,8 +18,12 @@ const CartContainer = () => {
   return (
     <section className="cart">
       {/* cart header */}
-      <header>
-        <h2>your bag</h2>
+      <header className="cart__header">
+        <h2 className="cart__title">shopping cart</h2>
+        <span className="cart__explanation">
+          You have {`${cart.length > 1 ? `${cart.length} items` : `1 item`}`} in
+          your cart
+        </span>
       </header>
       {/* cart items */}
       <div>
