@@ -11,8 +11,9 @@ function App() {
 
   if (loading) {
     return (
-      <div className="loading">
-        <h1>Loading...</h1>
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
       </div>
     );
   }
