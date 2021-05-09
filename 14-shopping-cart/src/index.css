@@ -180,14 +180,17 @@ Cart
 ===============
 */
 .cart-wrapper {
-  display: grid;
-  grid-template-columns: 4fr 2fr;
   grid-gap: 1rem;
   min-height: calc(100vh - 120px);
   margin-top: 5rem;
-  padding: 0 1rem;
+  width: 100%;
+}
 
-  /* width: 90vw; */
+@media screen and (min-width: 800px) {
+  .cart-wrapper {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+  }
 }
 
 .cart {
@@ -217,16 +220,7 @@ Cart
   margin-top: 1rem;
   text-align: center;
 }
-.cart footer {
-  margin-top: 4rem;
-  text-align: center;
-}
-/* .cart-total h4 {
-  text-transform: capitalize;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-} */
+
 .clear-btn {
   background: transparent;
   padding: 0.5rem 1rem;
@@ -246,12 +240,13 @@ Cart Item
 ===============
 */
 .cart-item {
+  position: relative;
   display: grid;
   align-items: center;
-  grid-template-columns: auto 1fr auto auto auto;
-  grid-column-gap: 1.5rem;
+  grid-template-columns: auto 30% auto auto;
+  grid-column-gap: 0.5rem;
   background: #ffffff;
-  padding: 1.5rem 1.25rem;
+  padding: 1.5rem 0.5rem;
   border-radius: 12px;
   box-shadow: 16px 16px 32px #e6e6e6, -16px -16px 32px #ffffff;
 }
@@ -262,6 +257,8 @@ Cart Item
 
 @media screen and (min-width: 800px) {
   .cart-item {
+    grid-template-columns: auto 1fr auto auto auto;
+    grid-column-gap: 1.5rem;
     padding: 1.5rem 2rem;
   }
 }
@@ -282,7 +279,6 @@ Cart Item
 .remove-btn {
   color: var(--clr-primary);
   cursor: pointer;
-  font-size: 0.85rem;
   background: var(--clr-grey-9);
   border: none;
   width: 48px;
@@ -290,6 +286,20 @@ Cart Item
   border-radius: 50%;
   transition: all 0.25s ease-in-out;
 }
+
+@media screen and (max-width: 800px) {
+  .remove-btn {
+    position: absolute;
+    top: -12px;
+    right: -8px;
+  }
+}
+
+/* @media screen and (min-width: 800px) {
+  .remove-btn {
+    position: relative;
+  }
+} */
 
 .remove-btn svg {
   stroke: var(--clr-grey-1);
@@ -368,6 +378,7 @@ Cart Total
   max-height: 450px;
   padding: 2rem;
   border-radius: 12px;
+  z-index: 1;
 }
 
 .total__header {
