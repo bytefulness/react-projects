@@ -193,7 +193,8 @@ Cart
   }
 }
 
-.cart {
+.cart,
+.empty-cart {
   width: 100%;
   margin: 0 auto;
   max-width: var(--fixed-width);
@@ -234,6 +235,35 @@ Cart
   color: var(--clr-red-dark);
   border-color: var(--clr-red-light);
 }
+
+/*
+=============== 
+Empty Cart
+===============
+*/
+.empty-cart {
+  height: calc(100vh - 120px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-cart__image {
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 800px) {
+  .empty-cart__image {
+    width: 60%;
+  }
+}
+
+.empty-cart__title {
+  margin-top: 2rem;
+  color: var(--clr-grey-1);
+}
+
 /*
 =============== 
 Cart Item

@@ -1,6 +1,7 @@
 import { ReactComponent as Apple } from "./images/payment-apple.svg";
 import { ReactComponent as Visa } from "./images/payment-visa.svg";
 import { ReactComponent as Paypal } from "./images/payment-paypal.svg";
+import EmptyCart from "./images/empty-cart.svg";
 import React, { useEffect } from "react";
 import CartItem from "./CartItem";
 import { useGlobalContext } from "./context";
@@ -9,11 +10,10 @@ const CartContainer = () => {
   const { cart, total, clearCart } = useGlobalContext();
   if (cart.length === 0) {
     return (
-      <section className="cart">
-        {/* cart header */}
+      <section className="empty-cart">
         <header>
-          <h2>your bag</h2>
-          <h4 className="empty-cart">is currently empty</h4>
+          <img src={EmptyCart} alt="empty-cart" className="empty-cart__image" />
+          <h3 className="empty-cart__title">Your cart is empty</h3>
         </header>
       </section>
     );
