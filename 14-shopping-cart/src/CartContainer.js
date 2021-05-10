@@ -23,7 +23,7 @@ const CartContainer = () => {
     button.classList.add("selected");
   };
 
-  const { cart, total, clearCart } = useGlobalContext();
+  const { cart, total, amount, clearCart } = useGlobalContext();
   if (cart.length === 0) {
     return (
       <section className="empty-cart">
@@ -39,8 +39,7 @@ const CartContainer = () => {
       <header className="cart__header">
         <h2 className="cart__title">shopping cart</h2>
         <span className="cart__explanation">
-          You have {`${cart.length > 1 ? `${cart.length} items` : `1 item`}`} in
-          your cart
+          You have {`${amount > 1 ? `${amount} items` : `1 item`}`} in your cart
         </span>
       </header>
 
