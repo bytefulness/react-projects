@@ -2,11 +2,27 @@ import { ReactComponent as Apple } from "./images/payment-apple.svg";
 import { ReactComponent as Visa } from "./images/payment-visa.svg";
 import { ReactComponent as Paypal } from "./images/payment-paypal.svg";
 import EmptyCart from "./images/empty-cart.svg";
-import React, { useEffect } from "react";
+import React, { useRef } from "react";
 import CartItem from "./CartItem";
 import { useGlobalContext } from "./context";
 
 const CartContainer = () => {
+  const paymentContainer = useRef(null);
+
+  const selectPayment = (e) => {
+    // Select payment model
+    const button = e.target.closest(".payment__button");
+    if (!button) return;
+
+    // Remove selected class from all of buttons
+    paymentContainer.current
+      .querySelectorAll(".payment__button")
+      .forEach((button) => button.classList.remove("selected"));
+
+    // Add selected style
+    button.classList.add("selected");
+  };
+
   const { cart, total, clearCart } = useGlobalContext();
   if (cart.length === 0) {
     return (
@@ -47,8 +63,12 @@ const CartContainer = () => {
 
           <div className="payment">
             <h4 className="payment__header">payment methods</h4>
-            <div className="payment__group">
-              <button className="payment__button">
+            <div
+              className="payment__group"
+              onClick={selectPayment}
+              ref={paymentContainer}
+            >
+              <button className="payment__button selected">
                 <Visa />
               </button>
               <button className="payment__button">

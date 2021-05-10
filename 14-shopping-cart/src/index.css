@@ -450,9 +450,10 @@ Cart Total
 
 .payment__button {
   border-radius: 4px;
-  transition: all 0.2s ease-in-out;
   background: var(--clr-white);
   border: 1px solid var(--clr-grey-4);
+  opacity: 0.6;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 
@@ -463,6 +464,10 @@ Cart Total
 .payment__button svg {
   width: 50px;
   height: 40px;
+}
+
+.payment__button.selected {
+  opacity: 1;
 }
 
 .pay,
